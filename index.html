@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Tugas Kuliah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grass"></div>
+  <div class="container">
+    <header class="header">
+      <div>
+        <h1>Dashboard Tugas Kuliah</h1>
+        <p class="subtitle">Sena Permatasari (124140018) · Teknik Informatika ITERA</p>
+      </div>
+      <p id="today" class="today"></p>
+    </header>
+
+    <section class="card quote-card">
+      <div>
+        <h2>Kutipan hari ini</h2>
+        <div id="quote" class="widget-body">Memuat kutipan...</div>
+      </div>
+      <button id="quoteBtn" class="btn btn-ghost" type="button">Kutipan lain</button>
+    </section>
+
+    <p id="reminder" class="reminder" role="status" hidden></p>
+
+    <section class="card">
+      <div class="progress-head">
+        <h2>Hati deadline</h2>
+        <span id="heartsText" class="progress-text"></span>
+      </div>
+      <div id="hearts" class="hearts" role="img" aria-label="Hati deadline"></div>
+      <p id="heartsMsg" class="hearts-msg"></p>
+    </section>
+
+    <section id="stats" class="stats"></section>
+
+    <section class="card">
+      <div class="progress-head">
+        <h2>Progres</h2>
+        <span id="progressText" class="progress-text"></span>
+      </div>
+      <div id="progress" class="progress" role="progressbar" aria-label="Progres tugas selesai" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="formTitle">Tambah Tugas</h2>
+      <form id="taskForm" class="form" autocomplete="off">
+        <label class="field field-wide">
+          <span>Nama tugas</span>
+          <input type="text" name="title" placeholder="Contoh: Laporan praktikum PAW" required maxlength="100">
+        </label>
+        <label class="field">
+          <span>Mata kuliah</span>
+          <input type="text" name="course" placeholder="Contoh: Pemrograman Web" maxlength="50">
+        </label>
+        <label class="field">
+          <span>Deadline (tanggal dan jam)</span>
+          <input type="datetime-local" name="deadline" required>
+        </label>
+        <label class="field">
+          <span>Prioritas</span>
+          <select name="priority">
+            <option value="rendah">Biasa (prioritas rendah)</option>
+            <option value="sedang" selected>Langka (prioritas sedang)</option>
+            <option value="tinggi">Epik (prioritas tinggi)</option>
+          </select>
+        </label>
+        <div class="form-actions">
+          <button id="submitBtn" class="btn btn-primary" type="submit">Tambah</button>
+          <button id="cancelBtn" class="btn btn-ghost" type="button" hidden>Batal edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="list-head">
+        <h2>Daftar Tugas</h2>
+        <div id="filters" class="filters">
+          <button class="chip active" data-filter="semua" type="button">Semua</button>
+          <button class="chip" data-filter="aktif" type="button">Belum selesai</button>
+          <button class="chip" data-filter="selesai" type="button">Selesai</button>
+        </div>
+      </div>
+      <input id="searchInput" class="search" type="search" placeholder="Cari nama tugas atau mata kuliah" aria-label="Cari tugas">
+      <ul id="taskList" class="task-list"></ul>
+      <p id="emptyMsg" class="empty" hidden></p>
+      <div class="list-foot">
+        <button id="sampleBtn" class="btn btn-ghost" type="button">Muat contoh tugas dari API</button>
+        <button id="clearDoneBtn" class="btn btn-ghost" type="button">Hapus yang selesai</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
